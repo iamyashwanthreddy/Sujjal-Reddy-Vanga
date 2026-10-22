@@ -210,11 +210,6 @@ html.has-cursor, html.has-cursor * { cursor: none !important; }
     radial-gradient(ellipse at 50% 40%, transparent 40%, rgba(13, 10, 10, 0.5) 100%);
 }
 
-.float { position: absolute; overflow: hidden; z-index: 4; background: var(--ink-2); }
-.float img { width: 100%; height: 100%; object-fit: cover; }
-.float--a { width: clamp(110px, 12vw, 200px); aspect-ratio: 16/10; top: 17%; left: 9%; }
-.float--b { width: clamp(100px, 10vw, 170px); aspect-ratio: 4/5; top: 14%; right: 11%; }
-.float--c { width: clamp(130px, 14vw, 230px); aspect-ratio: 16/9; top: 42%; right: 5%; }
 
 .hero__title {
   position: absolute; z-index: 2;
@@ -619,9 +614,6 @@ html.has-cursor, html.has-cursor * { cursor: none !important; }
   .nav__rec { display: none; }
   .nav__links { gap: 16px; }
   .hero__title { flex-direction: column; align-items: flex-start; padding: 0 var(--gutter); font-size: 21vw; bottom: 210px; }
-  .float--a { top: 13%; left: 5%; }
-  .float--b { top: 12%; right: 6%; }
-  .float--c { display: none; }
   .hero__bottom { grid-template-columns: 1fr; text-align: left; gap: 12px; }
   .hero__lede { text-align: left; justify-self: start; font-size: 12px; }
   .hero__cta { justify-self: start; }
@@ -645,7 +637,6 @@ html.has-cursor, html.has-cursor * { cursor: none !important; }
 @media (max-width: 520px) {
   .nav__links a:nth-child(2), .nav__links a:nth-child(3) { display: none; }
   .edu__item { grid-template-columns: 72px 1fr; }
-  .float--b { display: none; }
   .hero__roles { gap: 8px; }
   .hero__roles span + span::before { margin-right: 8px; }
   .contact__grid { grid-template-columns: 1fr; }

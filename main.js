@@ -149,8 +149,6 @@
       .fromTo(".hero__portrait", { clipPath: "inset(50% 50% 50% 50%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1.5, ease: "expo.inOut" }, 0)
       .from(".hero__portrait img", { scale: 1.6, duration: 2, ease: "expo.out" }, 0.25)
       .from(".hero__line .char", { yPercent: 115, duration: 1.2, ease: "expo.out", stagger: 0.04 }, 0.4)
-      .fromTo(".float", { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1.2, ease: "expo.inOut", stagger: 0.14 }, 0.7)
-      .from(".float img", { scale: 1.5, duration: 1.6, ease: "expo.out", stagger: 0.14 }, 0.8)
       .from(".nav > *", { y: -30, opacity: 0, duration: 0.9, ease: "power3.out", stagger: 0.08 }, 1)
       .from(".vf", { opacity: 0, scale: 0.3, duration: 0.7, ease: "back.out(2)", stagger: 0.06 }, 1.1)
       .from(".hero__bottom", { borderTopColor: "rgba(239,232,220,0)", duration: 0.8 }, 1.2)
@@ -162,20 +160,11 @@
 
   /* ---------- hero: mouse parallax + scroll ---------- */
   if (finePointer && !reduce) {
-    const floats = $$(".float").map((el) => ({
-      d: parseFloat(el.dataset.depth),
-      x: gsap.quickTo(el, "x", { duration: 1.2, ease: "power3" }),
-      y: gsap.quickTo(el, "y", { duration: 1.2, ease: "power3" }),
-    }));
     const px = gsap.quickTo(".hero__portrait img", "x", { duration: 1.4, ease: "power3" });
     const py = gsap.quickTo(".hero__portrait img", "y", { duration: 1.4, ease: "power3" });
     $(".hero").addEventListener("mousemove", (e) => {
       const nx = e.clientX / innerWidth - 0.5;
       const ny = e.clientY / innerHeight - 0.5;
-      floats.forEach((f) => {
-        f.x(nx * 60 * f.d);
-        f.y(ny * 50 * f.d);
-      });
       px(nx * -18);
       py(ny * -12);
     });
@@ -186,10 +175,7 @@
     .to(".hero__line--1", { xPercent: -40, ease: "none" }, 0)
     .to(".hero__line--3", { xPercent: 40, ease: "none" }, 0)
     .to(".hero__title", { yPercent: 60, opacity: 0.2, ease: "none" }, 0)
-    .to(".hero__portrait", { scale: 1.18, yPercent: 8, ease: "none" }, 0)
-    .to(".float--a", { yPercent: -140, ease: "none" }, 0)
-    .to(".float--b", { yPercent: -70, ease: "none" }, 0)
-    .to(".float--c", { yPercent: -180, ease: "none" }, 0);
+    .to(".hero__portrait", { scale: 1.18, yPercent: 8, ease: "none" }, 0);
 
   /* ---------- marquee (reacts to scroll velocity) ---------- */
   const mInner = $(".marquee__inner");

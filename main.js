@@ -280,7 +280,7 @@
   mm.add("(min-width: 900px)", () => {
     const track = $(".work__track");
     const dist = () => Math.max(0, track.scrollWidth - innerWidth);
-    const scroller = gsap.to(track, {
+    gsap.to(track, {
       x: () => -dist(),
       ease: "none",
       scrollTrigger: {
@@ -294,19 +294,6 @@
         onUpdate: (self) => gsap.set(".work__progress i", { scaleX: self.progress }),
       },
     });
-
-    // image drifts inside its frame as the reel moves
-    $$(".card__media img", track).forEach((img) =>
-      gsap.fromTo(
-        img,
-        { xPercent: -7 },
-        {
-          xPercent: 7,
-          ease: "none",
-          scrollTrigger: { trigger: img.closest(".card"), containerAnimation: scroller, start: "left right", end: "right left", scrub: true },
-        }
-      )
-    );
 
     gsap.from(".card", {
       y: 90,
@@ -471,7 +458,7 @@
         cursor.classList.add("is-play");
         gsap.to(cursor, { scale: 1, duration: 0.5, ease: "expo.out" });
         gsap.to(cursorLabel, { opacity: 1, duration: 0.3, delay: 0.1 });
-        gsap.to($(".card__media img", card), { scale: 1.06, duration: 1, ease: "expo.out" });
+        gsap.to($(".card__media img", card), { scale: 1.03, duration: 1, ease: "expo.out" });
       });
       card.addEventListener("mouseleave", () => {
         cursor.classList.remove("is-play");
